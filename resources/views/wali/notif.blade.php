@@ -15,7 +15,21 @@
                                     <i class="ti ti-mail"></i>
                                     <span class="align-middle ms-2">Kotak Masuk</span>
                                 </a>
-                                <div class="badge bg-label-primary rounded-pill badge-center">4</div>
+                                @php
+                                    $notificationCount = 0;
+                                @endphp
+
+                                @foreach ($data as $notif)
+                                    @if ($notif->nama === auth()->user()->username)
+                                        @php
+                                            $notificationCount++;
+                                        @endphp
+                                    @endif
+                                @endforeach
+
+                                <div class="badge bg-label-primary rounded-pill badge-center">
+                                    {{ $notificationCount }}
+                                </div>
                             </li>
                             <li class="d-flex align-items-center" data-target="trash">
                                 <a href="javascript:void(0);" class="d-flex flex-wrap align-items-center">
