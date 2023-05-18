@@ -8,9 +8,21 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Halaman Login</title>
+    <meta name="description" content="Jasa Pembuatan Website Dan Aplikasi Terpercaya dan Profesional">
+    <meta name="keywords"
+        content="Jasa pembuatan website indonesia, Jasa Pembuatan website Jember, Jasa Pembuatan aplikasi, Jasa Pembuatan aplikasi murah, Jasa Pembuatan aplikasi profesional, Jasa Pembuatan website Profesional, Jasa Pembuatan website murah, It Konsultan Terpercaya">
+    <meta name="author" content="Mentari Teknologi Digital">
+    <meta property="og:title" content="Mentari Teknologi Digital">
+    <meta property="og:description" content="Jasa Pembuatan Website Dan Aplikasi Terpercaya dan Profesional">
+    <meta property="og:image" content="https://www.mentariteknologidigital.com/storage/setting/vPFktJMJcU5CFuvB.png">
+    <meta property="og:url" content="https://absensi.anteiku.tech">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mentari Teknologi Digital">
+    <meta name="twitter:description" content="Jasa Pembuatan Website Dan Aplikasi Terpercaya dan Profesional">
+    <meta name="twitter:image" content="https://www.mentariteknologidigital.com/storage/setting/vPFktJMJcU5CFuvB.png">
 
-    <meta name="description" content="" />
+    <title>Halaman Login</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
