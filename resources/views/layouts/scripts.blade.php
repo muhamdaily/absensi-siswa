@@ -40,6 +40,7 @@
 <script src="{{ asset('assets/js/forms-tagify.js') }}"></script>
 <script src="{{ asset('assets/js/forms-typeahead.js') }}"></script>
 <script src="{{ asset('assets/js/pages-auth.js') }} "></script>
+<script src="{{ asset('assets/js/app-email.js') }} "></script>
 <script>
     // Mendapatkan elemen input tanggal
     var inputTanggal = document.getElementById('bs-datepicker-basic');

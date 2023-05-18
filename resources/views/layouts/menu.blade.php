@@ -82,6 +82,14 @@
             </li>
 
             <!-- Absensi -->
+            <li class="menu-item {{ Request::is('notifikasi') ? ' active' : '' }}">
+                <a href="{{ url('notifikasi') }}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-clipboard-text"></i>
+                    <div data-i18n="Notifikasi">Notifikasi</div>
+                </a>
+            </li>
+
+            <!-- Absensi -->
             <li class="menu-item {{ Request::is('absen') ? ' active' : '' }}">
                 <a href="{{ url('absen') }}" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-clipboard-text"></i>

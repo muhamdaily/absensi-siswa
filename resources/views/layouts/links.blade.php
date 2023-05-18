@@ -34,6 +34,7 @@
 <!-- Page CSS -->
 <link rel="stylesheet" href="assets/vendor/css/pages/cards-advance.css" />
 <link rel="stylesheet" href="assets/vendor/css/pages/page-auth.css" />
+<link rel="stylesheet" href="assets/vendor/css/pages/app-email.css" />
 <!-- Helpers -->
 <script src="assets/vendor/js/helpers.js"></script>
 
