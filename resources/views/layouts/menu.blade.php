@@ -76,7 +76,7 @@
             </li>
         @endif
 
-        @if (Auth::user()->role == 'Wali Murid' || 'Guru')
+        @if (Auth::user()->role == 'Wali Murid')
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Menu Wali Murid</span>
             </li>

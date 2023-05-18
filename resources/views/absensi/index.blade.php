@@ -101,6 +101,7 @@
                                                     <option value="Sakit">Sakit</option>
                                                     <option value="Alpha">Alpha</option>
                                                     <option value="Terlambat">Terlambat</option>
+                                                    <option value="Pulang">Pulang</option>
                                                 </select>
                                             </td>
                                         </tr>
