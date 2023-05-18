@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('mapel');
             $table->timestamp('waktu');
             $table->integer('id_siswa');
-            $table->enum('keterangan', ['Sakit', 'Ijin', 'Alpha', 'Terlambat', 'Masuk', 'Pulang']);
+            $table->enum('keterangan', ['Sakit', 'Izin', 'Alpha', 'Terlambat', 'Masuk', 'Pulang']);
         });
     }
 

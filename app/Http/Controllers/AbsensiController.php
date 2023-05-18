@@ -52,10 +52,11 @@ class AbsensiController extends Controller
 
         $username = $request->input('username');
         $mapel = $request->input('mapel');
-        $keterangan = $request->input('keterangan');
+        $keteranganArray = $request->input('keterangan');
 
-        // Simpan data ke dalam tabel absensi
-        foreach ($request->input('id_siswa') as $id) {
+        foreach ($request->input('id_siswa') as $index => $id) {
+            $keterangan = $keteranganArray[$index] ?? 'Masuk';
+
             Absensi::create([
                 'id_siswa' => $id,
                 'waktu' => $waktu,

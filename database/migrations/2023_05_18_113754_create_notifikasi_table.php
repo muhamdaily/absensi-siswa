@@ -33,8 +33,16 @@ BEGIN
 
     SELECT nama INTO _nama FROM siswa WHERE id = NEW.id_siswa;
 
-    INSERT INTO notifikasi (nama, judul, username, role, mapel, waktu, deskripsi)
-    VALUES (_nama, CONCAT(_nama,' telah ', NEW.keterangan), NEW.username, CONCAT('Guru - ', NEW.mapel), NEW.mapel, NEW.waktu, CONCAT('Kepada wali murid dari ', _nama, '. Ananda telah ', NEW.keterangan));
+    IF NEW.keterangan = 'Sakit' THEN
+        INSERT INTO notifikasi (nama, judul, username, role, mapel, waktu, deskripsi)
+        VALUES (_nama, CONCAT(_nama, ' telah izin karena ', NEW.keterangan), NEW.username, CONCAT('Guru - ', NEW.mapel), NEW.mapel, NEW.waktu, CONCAT('Kepada wali murid dari ', _nama, '. Ananda telah izin karena ', NEW.keterangan));
+    ELSEIF NEW.keterangan = 'Izin' THEN
+        INSERT INTO notifikasi (nama, judul, username, role, mapel, waktu, deskripsi)
+        VALUES (_nama, CONCAT(_nama, ' ', NEW.keterangan), NEW.username, CONCAT('Guru - ', NEW.mapel), NEW.mapel, NEW.waktu, CONCAT('Kepada wali murid dari ', _nama, '. Ananda ', NEW.keterangan));
+    ELSE
+        INSERT INTO notifikasi (nama, judul, username, role, mapel, waktu, deskripsi)
+        VALUES (_nama, CONCAT(_nama, ' telah ', NEW.keterangan), NEW.username, CONCAT('Guru - ', NEW.mapel), NEW.mapel, NEW.waktu, CONCAT('Kepada wali murid dari ', _nama, '. Ananda telah ', NEW.keterangan));
+    END IF;
 END
 EOT;
 
