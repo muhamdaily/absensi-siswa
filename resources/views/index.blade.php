@@ -29,7 +29,7 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div class="card-title mb-0">
-                            <h5 class="mb-0 me-2">1615 <span>Pengguna</span></h5>
+                            <h5 class="mb-0 me-2">{{ $totalPengguna }} <span>Pengguna</span></h5>
                             <small>Total Pengguna</small>
                         </div>
                         <div class="card-icon">
@@ -45,7 +45,7 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div class="card-title mb-0">
-                            <h5 class="mb-0 me-2">1.600 <span>Siswa</span></h5>
+                            <h5 class="mb-0 me-2">{{ $totalWaliMurid }} <span>Siswa</span></h5>
                             <small>Total Siswa</small>
                         </div>
                         <div class="card-icon">
@@ -61,7 +61,7 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div class="card-title mb-0">
-                            <h5 class="mb-0 me-2">15 <span>Guru</span></h5>
+                            <h5 class="mb-0 me-2">{{ $totalGuru }} <span>Guru</span></h5>
                             <small>Total Guru</small>
                         </div>
                         <div class="card-icon">

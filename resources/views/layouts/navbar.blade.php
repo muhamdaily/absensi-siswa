@@ -10,15 +10,47 @@
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item navbar-search-wrapper mb-0">
-                <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
-                    <i class="ti ti-search ti-md me-2"></i>
-                    <span class="d-none d-md-inline-block text-muted">Cari...</span>
-                </a>
+                <div class="d-flex align-items-center">
+                    <span class="badge badge-dot bg-success me-2"></span>
+                    <div id="MyClockDisplay" onload="showTime()"></div>
+                </div>
             </div>
         </div>
+
+        <script>
+            function showTime() {
+                var date = new Date();
+                var h = date.getHours(); // 0 - 23
+                var m = date.getMinutes(); // 0 - 59
+                var s = date.getSeconds(); // 0 - 59
+                var session = "AM";
+
+                if (h == 0) {
+                    h = 12;
+                }
+
+                if (h > 12) {
+                    h = h - 12;
+                    session = "PM";
+                }
+
+                h = h < 10 ? "0" + h : h;
+                m = m < 10 ? "0" + m : m;
+                s = s < 10 ? "0" + s : s;
+
+                var time = h + ":" + m + ":" + s + " " + session;
+                document.getElementById("MyClockDisplay").innerText = time;
+                document.getElementById("MyClockDisplay").textContent = time;
+
+                setTimeout(showTime, 1000);
+            }
+
+            showTime();
+        </script>
         <!-- /Search -->
 
-        <ul class="navbar-nav flex-row align-items-center ms-auto">
+        <ul class="navbar-nav
+                        flex-row align-items-center ms-auto">
             <!-- Style Switcher -->
             <li class="nav-item me-2 me-xl-0">
                 <a class="nav-link style-switcher-toggle hide-arrow" href="javascript:void(0);">

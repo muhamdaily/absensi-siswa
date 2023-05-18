@@ -8,7 +8,11 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Dashboard | Guru</title>
+    @if (auth()->user()->role === 'Guru')
+        <title>Dashboard | Guru</title>
+    @else
+        <title>Home | Wali Murid</title>
+    @endif
 
     <meta name="description" content="" />
 
