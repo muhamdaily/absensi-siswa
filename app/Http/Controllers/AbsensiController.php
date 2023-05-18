@@ -20,6 +20,7 @@ class AbsensiController extends Controller
 
         return view('absensi.index')->with([
             'data' => Siswa::all(),
+            'data' => $siswa,
         ]);
     }
 
