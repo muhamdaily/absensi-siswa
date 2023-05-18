@@ -11,4 +11,9 @@ class Absensi extends Model
     protected $guarded = ['id'];
     protected $table = 'Absensi';
     public $timestamps = false;
+
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class, 'id_siswa');
+    }
 }
