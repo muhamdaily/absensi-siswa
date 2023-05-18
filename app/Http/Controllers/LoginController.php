@@ -53,7 +53,7 @@ class LoginController extends Controller
             'remember_token' => Str::random(60),
         ]);
 
-        return redirect('masuk');
+        return redirect('/');
     }
 
     public function fungsiLogout(Request $request)
@@ -63,6 +63,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/masuk')->with('message', 'Anda telah logout!');
+        return redirect('/')->with('message', 'Anda telah logout!');
     }
 }

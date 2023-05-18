@@ -9,10 +9,10 @@ use App\Http\Controllers\WaliController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(LoginController::class)->group(function () {
-    Route::get('masuk', 'index');
+    Route::get('/', 'index');
     Route::post('login', 'fungsiLogin');
-    Route::get('register', 'halamanDaftar');
-    Route::post('daftar', 'fungsiDaftar');
+    Route::get('daftar', 'halamanDaftar');
+    Route::post('register', 'fungsiDaftar');
 });
 route::post('logout', [LoginController::class, 'fungsiLogout'])->middleware('auth');
 
