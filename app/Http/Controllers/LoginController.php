@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\registerRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,7 @@ class LoginController extends Controller
         return back()->with(['message' => 'Username atau Kata Sandi Salah']);
     }
 
-    public function fungsiDaftar(Request $request)
+    public function fungsiDaftar(registerRequest $request)
     {
         $this->validate($request, [
             'username' => 'required', 'min:6',

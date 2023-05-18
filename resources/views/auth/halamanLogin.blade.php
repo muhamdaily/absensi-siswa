@@ -100,7 +100,11 @@
                     <!-- /Logo -->
                     <h3 class="mb-1 fw-bold">Selamat Datang!</h3>
                     <p class="mb-4">Silahkan masuk ke dalam akun Anda.</p>
-
+                    @if (Session::has('message'))
+                        <div class="text-danger alert alert-danger">
+                            {{ Session::get('message') }}
+                        </div>
+                    @endif
                     <form id="formAuthentication" class="mb-3" action="{{ url('login') }}" method="POST">
                         @csrf
                         <div class="mb-3">
