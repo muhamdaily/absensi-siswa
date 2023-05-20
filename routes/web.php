@@ -8,15 +8,17 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WaliController;
 use Illuminate\Support\Facades\Route;
 
-Route::controller(LoginController::class)->group(function () {
-    Route::get('/', 'index');
-    Route::post('login', 'fungsiLogin');
-    Route::get('daftar', 'halamanDaftar');
-    Route::post('register', 'fungsiDaftar');
+Route::middleware('role:Wali Murid')->group(function () {
+    Route::get('home', [WaliController::class, 'index']);
+    Route::get('absen', [WaliController::class, 'absenView']);
+    Route::get('notifikasi', [NotifikasiController::class, 'index']);
 });
-route::post('logout', [LoginController::class, 'fungsiLogout'])->middleware('auth');
 
+Route::middleware('role:Guru')->group(function () {
+    Route::get('dashboard', [DashboardController::class, 'index']);
+    Route::resource('absensi', AbsensiController::class);
 
+<<<<<<< Updated upstream
 Route::get('dashboard', [DashboardController::class, 'index']);
 Route::get('home', [WaliController::class, 'index']);
 Route::get('absen', [WaliController::class, 'absenView']);
@@ -27,3 +29,17 @@ Route::post('import-excel', [SiswaController::class, 'importExcel'])->name('impo
 Route::get('/siswa/{kelas}', 'SiswaController@kelas')->name('siswa.kelas');
 
 Route::delete('/notifikasi/delete', [NotifikasiController::class, 'postDelete'])->name('notifikasi.delete');
+=======
+    Route::resource('siswa', SiswaController::class);
+    Route::post('import-excel', [SiswaController::class, 'importExcel'])->name('import.excel');
+    Route::get('/siswa/{kelas}', 'SiswaController@kelas')->name('siswa.kelas');
+});
+
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/', 'index')->name('halamanLogin')->middleware('guest');
+    Route::post('login', 'fungsiLogin')->middleware('guest');
+    Route::get('daftar', 'halamanDaftar')->middleware('guest');
+    Route::post('register', 'fungsiDaftar')->middleware('guest');
+    Route::post('logout', 'fungsiLogout')->middleware('auth');
+});
+>>>>>>> Stashed changes
