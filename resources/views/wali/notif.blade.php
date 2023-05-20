@@ -31,12 +31,6 @@
                                     {{ $notificationCount }}
                                 </div>
                             </li>
-                            <li class="d-flex align-items-center" data-target="trash">
-                                <a href="javascript:void(0);" class="d-flex flex-wrap align-items-center">
-                                    <i class="ti ti-trash text-danger"></i>
-                                    <span class="align-middle ms-2">Sampah</span>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -45,111 +39,119 @@
                 <!-- Emails List -->
                 <div class="col app-emails-list">
                     <div class="shadow-none border-0">
-                        <div class="emails-list-header p-3 py-lg-3 py-2">
-                            <!-- Email List: Search -->
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center w-100">
-                                    <i class="ti ti-menu-2 ti-sm cursor-pointer d-block d-lg-none me-3"
-                                        data-bs-toggle="sidebar" data-target="#app-email-sidebar" data-overlay></i>
-                                    <div class="mb-0 mb-lg-2 w-100">
-                                        <div class="input-group input-group-merge shadow-none">
-                                            <span class="input-group-text border-0 ps-0" id="email-search">
-                                                <i class="ti ti-search"></i>
-                                            </span>
-                                            <input type="text" class="form-control email-search-input border-0"
-                                                placeholder="Cari Notifikasi" aria-label="Cari Notifikasi"
-                                                aria-describedby="email-search" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center mb-0 mb-md-2">
-                                    <i
-                                        class="ti ti-rotate-clockwise rotate-180 scaleX-n1-rtl cursor-pointer email-refresh me-2 mt-1"></i>
-                                    <div class="dropdown d-flex align-self-center">
-                                        <button class="btn p-0" type="button" id="emailsActions" data-bs-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="emailsActions">
-                                            <a class="dropdown-item" href="javascript:void(0)">Tandai telah dibaca</a>
-                                            <a class="dropdown-item" href="javascript:void(0)">Belum dibaca</a>
-                                            <a class="dropdown-item" href="javascript:void(0)">Hapus</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr class="mx-n3 emails-list-header-hr" />
-                            <!-- Email List: Actions -->
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <div class="form-check mb-0 me-2">
-                                        <input class="form-check-input" type="checkbox" id="email-select-all" />
-                                        <label class="form-check-label" for="email-select-all"></label>
-                                    </div>
-                                    <i class="ti ti-trash text-danger email-list-delete cursor-pointer me-2"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="container-m-nx m-0" />
-                        <!-- Email List: Items -->
-                        <div class="email-list pt-0">
-                            @foreach ($data as $notif)
-                                @php
-                                    $waktuNotifikasi = \Carbon\Carbon::parse($notif->waktu)->format('H:i');
-                                    $waktuSekarang = \Carbon\Carbon::now()->tz('Asia/Jakarta');
-                                    $selisihMenit = $waktuSekarang->diffInMinutes($waktuNotifikasi);
-                                    $waktuTeks = '';
-                                    
-                                    if ($selisihMenit < 1) {
-                                        $waktuTeks = 'baru saja';
-                                    } elseif ($selisihMenit < 60) {
-                                        $waktuTeks = $selisihMenit . ' menit yang lalu';
-                                    } elseif ($selisihMenit < 60 * 24) {
-                                        $selisihJam = $waktuSekarang->diffInHours($waktuNotifikasi);
-                                        $waktuTeks = $selisihJam . ' jam yang lalu';
-                                    } elseif ($selisihMenit < 60 * 24 * 30) {
-                                        $selisihHari = $waktuSekarang->diffInDays($waktuNotifikasi);
-                                        $waktuTeks = $selisihHari . ' hari yang lalu';
-                                    } elseif ($selisihMenit < 60 * 24 * 30 * 12) {
-                                        $selisihBulan = $waktuSekarang->diffInMonths($waktuNotifikasi);
-                                        $waktuTeks = $selisihBulan . ' bulan yang lalu';
-                                    } else {
-                                        $selisihTahun = $waktuSekarang->diffInYears($waktuNotifikasi);
-                                        $waktuTeks = $selisihTahun . ' tahun yang lalu';
-                                    }
-                                @endphp
-
-                                @if ($notif->nama === auth()->user()->username)
-                                    <ul class="list-unstyled m-0">
-                                        <li class="email-list-item" data-starred="true" data-bs-toggle="sidebar"
-                                            data-target="#app-email-view">
-                                            <div class="d-flex align-items-center">
-                                                <div class="form-check mb-0">
-                                                    <input class="email-list-item-input form-check-input" type="checkbox"
-                                                        id="email-1" />
-                                                    <label class="form-check-label" for="email-1"></label>
-                                                </div>
-                                                <img src="assets/img/avatars/1.png" alt="user-avatar"
-                                                    class="d-block flex-shrink-0 rounded-circle me-sm-3 me-2" height="32"
-                                                    width="32" />
-                                                <div class="email-list-item-content ms-2 ms-sm-0 me-2">
-                                                    <span class="h6 email-list-item-username me-2">{{ $notif->username }}
-                                                        |
-                                                        {{ $notif->role }}</span>
-                                                    <span
-                                                        class="email-list-item-subject d-xl-inline-block d-block">{{ $notif->judul }}</span>
-                                                </div>
-                                                <div class="email-list-item-meta ms-auto d-flex align-items-center">
-                                                    <small class="email-list-item-time text-muted">
-                                                        {{ $waktuTeks }}
-                                                    </small>
-                                                </div>
+                        <form action="{{ route('notifikasi.delete') }}" method="POST" id="delete-form">
+                            @csrf
+                            @method('DELETE')
+                            <div class="emails-list-header p-3 py-lg-3 py-2">
+                                <!-- Email List: Search -->
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center w-100">
+                                        <i class="ti ti-menu-2 ti-sm cursor-pointer d-block d-lg-none me-3"
+                                            data-bs-toggle="sidebar" data-target="#app-email-sidebar" data-overlay></i>
+                                        <div class="mb-0 mb-lg-2 w-100">
+                                            <div class="input-group input-group-merge shadow-none">
+                                                <span class="input-group-text border-0 ps-0" id="email-search">
+                                                    <i class="ti ti-search"></i>
+                                                </span>
+                                                <input type="text" class="form-control email-search-input border-0"
+                                                    placeholder="Cari Notifikasi" aria-label="Cari Notifikasi"
+                                                    aria-describedby="email-search" />
                                             </div>
-                                        </li>
-                                    </ul>
-                                @endif
-                            @endforeach
-                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-0 mb-md-2">
+                                        <i
+                                            class="ti ti-rotate-clockwise rotate-180 scaleX-n1-rtl cursor-pointer email-refresh me-2 mt-1"></i>
+                                        <div class="dropdown d-flex align-self-center">
+                                            <button class="btn p-0" type="button" id="emailsActions"
+                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="ti ti-dots-vertical"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="emailsActions">
+                                                <a class="dropdown-item" href="javascript:void(0)">Tandai telah dibaca</a>
+                                                <a class="dropdown-item" href="javascript:void(0)">Belum dibaca</a>
+                                                <a class="dropdown-item" href="javascript:void(0)">Hapus</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mx-n3 emails-list-header-hr" />
+                                <!-- Email List: Actions -->
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="checkbox" id="email-select-all" />
+                                            <label class="form-check-label" for="email-select-all"></label>
+                                        </div>
+                                        <i class="ti ti-trash text-danger email-list-delete cursor-pointer me-2"
+                                            onclick="document.getElementById('delete-form').submit()"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="container-m-nx m-0" />
+                            <!-- Email List: Items -->
+                            <div class="email-list pt-0">
+                                @foreach ($data as $notif)
+                                    @php
+                                        $waktuNotifikasi = \Carbon\Carbon::parse($notif->waktu)->format('H:i');
+                                        $waktuSekarang = \Carbon\Carbon::now()->tz('Asia/Jakarta');
+                                        $selisihMenit = $waktuSekarang->diffInMinutes($waktuNotifikasi);
+                                        $waktuTeks = '';
+                                        
+                                        if ($selisihMenit < 1) {
+                                            $waktuTeks = 'baru saja';
+                                        } elseif ($selisihMenit < 60) {
+                                            $waktuTeks = $selisihMenit . ' menit yang lalu';
+                                        } elseif ($selisihMenit < 60 * 24) {
+                                            $selisihJam = $waktuSekarang->diffInHours($waktuNotifikasi);
+                                            $waktuTeks = $selisihJam . ' jam yang lalu';
+                                        } elseif ($selisihMenit < 60 * 24 * 30) {
+                                            $selisihHari = $waktuSekarang->diffInDays($waktuNotifikasi);
+                                            $waktuTeks = $selisihHari . ' hari yang lalu';
+                                        } elseif ($selisihMenit < 60 * 24 * 30 * 12) {
+                                            $selisihBulan = $waktuSekarang->diffInMonths($waktuNotifikasi);
+                                            $waktuTeks = $selisihBulan . ' bulan yang lalu';
+                                        } else {
+                                            $selisihTahun = $waktuSekarang->diffInYears($waktuNotifikasi);
+                                            $waktuTeks = $selisihTahun . ' tahun yang lalu';
+                                        }
+                                    @endphp
+
+                                    @if ($notif->nama === auth()->user()->username)
+                                        <ul class="list-unstyled m-0">
+                                            <li class="email-list-item" data-starred="true" data-bs-toggle="sidebar"
+                                                data-target="#app-email-view">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="form-check mb-0">
+                                                        <input class="email-list-item-input form-check-input"
+                                                            type="checkbox" name="selected_items[]"
+                                                            value="{{ $notif->id }}" id="email-{{ $notif->id }}" />
+                                                        <label class="form-check-label"
+                                                            for="email-{{ $notif->id }}"></label>
+                                                    </div>
+                                                    <img src="assets/img/avatars/1.png" alt="user-avatar"
+                                                        class="d-block flex-shrink-0 rounded-circle me-sm-3 me-2"
+                                                        height="32" width="32" />
+                                                    <div class="email-list-item-content ms-2 ms-sm-0 me-2">
+                                                        <span
+                                                            class="h6 email-list-item-username me-2">{{ $notif->username }}
+                                                            |
+                                                            {{ $notif->role }}</span>
+                                                        <span
+                                                            class="email-list-item-subject d-xl-inline-block d-block">{{ $notif->judul }}</span>
+                                                    </div>
+                                                    <div class="email-list-item-meta ms-auto d-flex align-items-center">
+                                                        <small class="email-list-item-time text-muted">
+                                                            {{ $waktuTeks }}
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </form>
                     </div>
                     <div class="app-overlay"></div>
                 </div>

@@ -16,7 +16,7 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $siswa = Siswa::paginate(10);
+        $siswa = Siswa::paginate(50);
 
         return view('absensi.index')->with([
             'data' => Siswa::all(),

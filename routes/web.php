@@ -20,8 +20,10 @@ route::post('logout', [LoginController::class, 'fungsiLogout'])->middleware('aut
 Route::get('dashboard', [DashboardController::class, 'index']);
 Route::get('home', [WaliController::class, 'index']);
 Route::get('absen', [WaliController::class, 'absenView']);
-Route::get('notifikasi', [NotifikasiController::class, 'index']);
+Route::get('notifikasi', [NotifikasiController::class, 'index'])->name('notifikasi.index');
 Route::resource('absensi', AbsensiController::class);
 Route::resource('siswa', SiswaController::class);
 Route::post('import-excel', [SiswaController::class, 'importExcel'])->name('import.excel');
 Route::get('/siswa/{kelas}', 'SiswaController@kelas')->name('siswa.kelas');
+
+Route::delete('/notifikasi/delete', [NotifikasiController::class, 'postDelete'])->name('notifikasi.delete');
