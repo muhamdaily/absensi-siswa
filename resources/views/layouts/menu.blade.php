@@ -39,6 +39,13 @@
                     <div data-i18n="Beranda">Beranda</div>
                 </a>
             </li>
+
+            <li class="menu-item {{ Request::is('users') ? ' active' : '' }}">
+                <a href="users.html" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-user"></i>
+                    <div data-i18n="Pengguna">Pengguna</div>
+                </a>
+            </li>
         @elseif(Auth::user()->role == 'Wali Murid')
             <li class="menu-item {{ Request::is('home') ? ' active' : '' }}">
                 <a href="{{ url('home') }}" class="menu-link">

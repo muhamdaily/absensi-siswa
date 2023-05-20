@@ -190,45 +190,14 @@
                     </li>
                     <li>
                         <a class="dropdown-item" href="pages-profile-user.html">
-                            <i class="ti ti-user-check me-2 ti-sm"></i>
-                            <span class="align-middle">My Profile</span>
+                            <i class="ti ti-user me-2 ti-sm"></i>
+                            <span class="align-middle">Profil</span>
                         </a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="pages-account-settings-account.html">
                             <i class="ti ti-settings me-2 ti-sm"></i>
-                            <span class="align-middle">Settings</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="pages-account-settings-billing.html">
-                            <span class="d-flex align-items-center align-middle">
-                                <i class="flex-shrink-0 ti ti-credit-card me-2 ti-sm"></i>
-                                <span class="flex-grow-1 align-middle">Billing</span>
-                                <span
-                                    class="flex-shrink-0 badge badge-center rounded-pill bg-label-danger w-px-20 h-px-20">2</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="pages-help-center-landing.html">
-                            <i class="ti ti-lifebuoy me-2 ti-sm"></i>
-                            <span class="align-middle">Help</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="pages-faq.html">
-                            <i class="ti ti-help me-2 ti-sm"></i>
-                            <span class="align-middle">FAQ</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="pages-pricing.html">
-                            <i class="ti ti-currency-dollar me-2 ti-sm"></i>
-                            <span class="align-middle">Pricing</span>
+                            <span class="align-middle">Pengaturan</span>
                         </a>
                     </li>
                     <li>
@@ -237,10 +206,10 @@
                     <li>
                         <form id="formLogout" action="logout" method="post" enctype="multipart/form-data">
                             @csrf
-                            <a class="dropdown-item" type="button"
+                            <a class="dropdown-item text-danger" type="button"
                                 onclick="document.getElementById('formLogout').submit()">
                                 <i class="ti ti-logout me-2 ti-sm"></i>
-                                <span class="align-middle">Log Out</span>
+                                <span class="align-middle">Keluar</span>
                             </a>
                         </form>
                     </li>
@@ -248,12 +217,5 @@
             </li>
             <!--/ User -->
         </ul>
-    </div>
-
-    <!-- Search Small Screens -->
-    <div class="navbar-search-wrapper search-input-wrapper d-none">
-        <input type="text" class="form-control search-input container-xxl border-0" placeholder="Cari..."
-            aria-label="Cari..." />
-        <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
     </div>
 </nav>
