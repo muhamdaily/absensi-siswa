@@ -17,8 +17,12 @@
                                     <th>Keterangan</th>
                                 </tr>
                             </thead>
+                            @php
+                                $sortedItems = $item->sortByDesc('waktu');
+                            @endphp
+
                             <tbody class="table-border-bottom-0">
-                                @foreach ($item as $absensi)
+                                @foreach ($sortedItems as $absensi)
                                     @php
                                         $waktu = $absensi->waktu;
                                         $tanggal = date('d F Y', strtotime($waktu));
@@ -48,7 +52,6 @@
                                         ];
                                         $hari = $hariIndonesia[date('l', strtotime($waktu))];
                                         $bulan = $bulanIndonesia[date('F', strtotime($waktu))];
-                                        
                                         $hasil = $hari . ', ' . date('d', strtotime($waktu)) . ' ' . $bulan . ' ' . date('Y', strtotime($waktu)) . ' - Jam ' . $jam;
                                     @endphp
                                     @if ($absensi->siswa->nama === auth()->user()->username)
@@ -64,6 +67,7 @@
                                     @endif
                                 @endforeach
                             </tbody>
+
                         </table>
                     </div>
                 </div>
