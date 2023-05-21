@@ -12,8 +12,8 @@ class WaliController extends Controller
     public function index()
     {
         $notifikasi = Notifikasi::all();
-        $totalGuru = User::where('role', 'guru')->count();
-        $totalWaliMurid = User::where('role', 'wali_murid')->count();
+        $totalGuru = User::where('role', 'Guru')->count();
+        $totalWaliMurid = User::where('role', 'Wali Murid')->count();
         $totalPengguna = User::count();
 
         return view('wali.index', [
