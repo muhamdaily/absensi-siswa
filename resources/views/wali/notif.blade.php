@@ -91,7 +91,10 @@
                             <hr class="container-m-nx m-0" />
                             <!-- Email List: Items -->
                             <div class="email-list pt-0">
-                                @foreach ($data as $notif)
+                                @php
+                                    $sortedData = $data->sortByDesc('waktu');
+                                @endphp
+                                @foreach ($sortedData as $notif)
                                     @php
                                         $waktuNotifikasi = \Carbon\Carbon::parse($notif->waktu)->format('H:i');
                                         $waktuSekarang = \Carbon\Carbon::now()->tz('Asia/Jakarta');
